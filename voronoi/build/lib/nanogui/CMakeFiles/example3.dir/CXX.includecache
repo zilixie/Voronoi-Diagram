@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/xiezili/Desktop/voronoi/lib/nanogui/src/example3.cpp
+glad/glad.h
+-
+GLFW/glfw3.h
+-
+nanogui/nanogui.h
+-
+iostream
+-
+
