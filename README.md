@@ -21,7 +21,8 @@ This section introduces the main data structures that I defined for the general 
 
 ### Event
 A Event can be either a site event or a circle event. A site event happens when the sweepline reaches a new site that has not yet been reached. A circle happens when the sweepline touch the bottom of the circle where the three associated points lie on. The Event class has a attribute named position that shows where the event actually happens and a integer vector called associate that stores the related points that are associated with this event. For circle event, there are 3 points, and for site event, there is only one.
-`class Event {
+```
+class Event {
 	public:
 		Eigen::Vector2d position;
 		std::vector associate;
@@ -39,7 +40,8 @@ A Event can be either a site event or a circle event. A site event happens when 
 			associate.push_back(s3);
 			type = 0;
 		}
-};`
+};
+```
 
 ### Voronoi
 The Voronoi class is the class that stores all the principle elements of the Voronoi diagram:
