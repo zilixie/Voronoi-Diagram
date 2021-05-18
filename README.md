@@ -132,3 +132,4 @@ class AVL{
 
 ### Example
 Before any event happens. The first event to meet is the site event of site 1.
+![](images/1.png)
