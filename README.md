@@ -83,3 +83,6 @@ class Voronoi {
 		void extend_open_edges();
 };
 ```
+
+### Node
+This class represents the nodes of the AVL tree used for beachline. Each node contains a height and a two dimensional integer vector break_point as attributes. The break point [0,1] stand for the intersection between the parabola number 0 and the parabola number 1, where 0 is to the left of the intersection and 1 is to the right. A node also has a pointer to its left and a pointer to its right child.
