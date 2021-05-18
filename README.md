@@ -86,3 +86,49 @@ class Voronoi {
 
 ### Node
 This class represents the nodes of the AVL tree used for beachline. Each node contains a height and a two dimensional integer vector break_point as attributes. The break point [0,1] stand for the intersection between the parabola number 0 and the parabola number 1, where 0 is to the left of the intersection and 1 is to the right. A node also has a pointer to its left and a pointer to its right child.
+```
+class node{
+	public:
+		int height;
+		Eigen::Vector2i break_point;
+		node* left;
+		node* right;
+
+		node (Eigen::Vector2i bp) {
+			height = 1;
+			break_point = bp;
+			left = NULL;
+			right = NULL;
+		}
+};
+```
+
+### AVL
+The last one will be the class of AVL tree. An AVL tree is initialized with the entire voronoi diagram, so that the graph data can be accessed within the class. When making query within the tree, the key value of each node are determined by computing the corresponding intersection, which requires access to the points data and current sweepline location.
+```
+class AVL{
+	public:
+		node* root = NULL;
+		Eigen::MatrixXd points;
+		double sweepline_y;
+		std::vector tree_rep;
+		std::vector msg;
+
+		AVL(Voronoi* diagram) {
+			points = diagram->points;
+			Eigen::Vector3d new_point = points.row(1);
+			sweepline_y = new_point(1);
+			Eigen::Vector3d arc_params = get_line_params(0);
+			double pa = arc_params(0);
+			double pb = arc_params(1);
+			double pc = arc_params(2);
+			double intersect_y = pa*new_point(0)*new_point(0) + pb*new_point(0) + pc;
+			diagram->open_edges[0][1] = Eigen::Vector3d(new_point(0), intersect_y, 1);
+			diagram->open_edges[1][0] = Eigen::Vector3d(new_point(0), intersect_y, 1);
+		}
+		...
+};
+```
+
+### Example
+Before any event happens. The first event to meet is the site event of site 1.
