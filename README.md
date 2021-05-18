@@ -51,3 +51,35 @@ The Voronoi class is the class that stores all the principle elements of the Vor
 - a vector of 3 dimensional vector that collects the parameters for all parabolas lines_param.
 - a vector of 1000x3 dimensional matrix to store the point on all parabolas lines.
 - a priority queue for all Events event_queue.
+```
+class Voronoi {
+	public:
+		double sweepline_y;
+		int sub_div;
+
+		// for visualize
+		Eigen::MatrixXd points; //sites
+		Eigen::MatrixXd vor_vtx; //sites
+
+		std::vector <std::vector <Eigen::Vector2d >> vor_vtx_map; //table
+		std::vector <Eigen::Matrix2d> edges;
+		std::vector <std::vector <Eigen::Vector3d >> open_edges;
+
+		std::vector < Eigen::Vector3d> lines_param; //Parameters
+		std::vector < Eigen::MatrixXd> lines; //sampled points on line
+		Eigen::MatrixXd beach_line;
+		Eigen::MatrixXd data;
+
+		// for compute
+		std::priority_queue < Event, std::vector < Event >, PQ_comparator> event_queue;
+
+		Voronoi(int n);
+		Eigen::Vector2d generate_point();
+		Eigen::MatrixXd interpolate_line(double start, double end, double a, double b, double c);
+		void update_lines_param();
+		void update_lines_points();
+		void update_data(double yoffset, Eigen::MatrixXd tree_edges);
+
+		void extend_open_edges();
+};
+```
