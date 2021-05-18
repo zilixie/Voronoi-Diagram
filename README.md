@@ -4,3 +4,20 @@ A line sweeping algorithm for constructing Voronoi Diagram implemented in C++ co
 - Visualization of the parabolas & beachline.
 - Visualization of the circle formed by circle events.
 Some other events are presented with the help of plain text.
+
+## How To Use
+`Trackpad`: Use your trackpad to scroll the sweepline up/down to see the events at different time steps..
+`Q`: Quit the program.
+
+## Platform/Programming Language
+- GLFW/C++
+- nanogui
+
+Except as described above, all the work on this project is my/our own. Signed Zili Xie.
+My Work: All files in `voronoi/include`, `voronoi/src`, `voronoi/shader`.
+
+## Data Structures
+This section introduces the main data structures that I defined for the general use in this project. The following classes are defined in `Voronoi.h` and `AVL.h` file.
+
+### Event
+A Event can be either a site event or a circle event. A site event happens when the sweepline reaches a new site that has not yet been reached. A circle happens when the sweepline touch the bottom of the circle where the three associated points lie on. The Event class has a attribute named position that shows where the event actually happens and a integer vector called associate that stores the related points that are associated with this event. For circle event, there are 3 points, and for site event, there is only one.
