@@ -132,4 +132,14 @@ class AVL{
 
 ### Example
 Before any event happens. The first event to meet is the site event of site 1.
-![](images/1.png)
+![](images/2.png)
+Next, our sweepline hits site 1. The new parabola will intersect with parabola 0 in all cases.
+![](images/3.png)
+We hit site 2. The arc that is vertically above the new parabola is parabola 0. node (0, 2) and (2, 0) are being inserted to our AVL tree as two new break points are created by this site event. We also need to check if the new site forms new circle events with its neighbours. In this case, circle event (2, 0, 1) are found and will be inserted to our priority queue.
+![](images/4.png)
+We insert site 3. Again, two new nodes (0, 3) and (3, 0) will be inserted to our AVL tree. This time the new site is not to the left of all other sites, so two new circle events (2, 0, 3) and (3, 0, 1) will be added to the queue. After the site being inserted, we will be hitting a circle event (3, 0, 1) next.
+![](images/5.png)
+The circel event (3, 0, 1) is hitted and a new Voronoi vertex is added. This will remove the nodes (3, 0) and (0, 1) and replace with a new node (3, 1).
+![](images/6.png)
+![](images/7.png)
+![](images/7.png)
